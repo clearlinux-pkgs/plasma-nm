@@ -6,7 +6,7 @@
 #
 Name     : plasma-nm
 Version  : 5.14.3
-Release  : 7
+Release  : 8
 URL      : https://download.kde.org/stable/plasma/5.14.3/plasma-nm-5.14.3.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.14.3/plasma-nm-5.14.3.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.14.3/plasma-nm-5.14.3.tar.xz.sig
