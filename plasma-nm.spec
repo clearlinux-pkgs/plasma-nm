@@ -6,7 +6,7 @@
 #
 Name     : plasma-nm
 Version  : 5.14.4
-Release  : 10
+Release  : 11
 URL      : https://download.kde.org/stable/plasma/5.14.4/plasma-nm-5.14.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.14.4/plasma-nm-5.14.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.14.4/plasma-nm-5.14.4.tar.xz.sig
@@ -21,6 +21,7 @@ BuildRequires : ModemManager-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : modemmanager-qt-dev
+BuildRequires : openconnect-dev
 BuildRequires : openssl-dev
 BuildRequires : pkg-config
 BuildRequires : plasma-framework-dev
@@ -84,7 +85,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543396596
+export SOURCE_DATE_EPOCH=1544458960
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -92,7 +93,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543396596
+export SOURCE_DATE_EPOCH=1544458960
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-nm/COPYING
@@ -132,6 +133,8 @@ popd
 /usr/share/kservices5/plasmanetworkmanagement_fortisslvpnui.desktop
 /usr/share/kservices5/plasmanetworkmanagement_iodineui.desktop
 /usr/share/kservices5/plasmanetworkmanagement_l2tpui.desktop
+/usr/share/kservices5/plasmanetworkmanagement_openconnect_juniperui.desktop
+/usr/share/kservices5/plasmanetworkmanagement_openconnectui.desktop
 /usr/share/kservices5/plasmanetworkmanagement_openswanui.desktop
 /usr/share/kservices5/plasmanetworkmanagement_openvpnui.desktop
 /usr/share/kservices5/plasmanetworkmanagement_pptpui.desktop
@@ -156,6 +159,7 @@ popd
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_fortisslvpnui.so
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_iodineui.so
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_l2tpui.so
+/usr/lib64/qt5/plugins/libplasmanetworkmanagement_openconnectui.so
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_openswanui.so
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_openvpnui.so
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_pptpui.so

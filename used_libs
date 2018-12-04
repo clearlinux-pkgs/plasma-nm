@@ -24,5 +24,6 @@ libQt5Quick.so.5
 libQt5Widgets.so.5
 libQt5Xml.so.5
 libc.so.6
+libopenconnect.so.5
 libqca-qt5.so.2
 libstdc++.so.6
