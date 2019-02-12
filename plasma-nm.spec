@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-nm
-Version  : 5.14.5
-Release  : 12
-URL      : https://download.kde.org/stable/plasma/5.14.5/plasma-nm-5.14.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.14.5/plasma-nm-5.14.5.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.14.5/plasma-nm-5.14.5.tar.xz.sig
+Version  : 5.15.0
+Release  : 13
+URL      : https://download.kde.org/stable/plasma/5.15.0/plasma-nm-5.15.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.15.0/plasma-nm-5.15.0.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.15.0/plasma-nm-5.15.0.tar.xz.sig
 Summary  : Plasma applet written in QML for managing network connections
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -20,12 +20,12 @@ Requires: plasma-nm-locales = %{version}-%{release}
 BuildRequires : ModemManager-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : modemmanager-qt-dev
 BuildRequires : openconnect-dev
 BuildRequires : openssl-dev
 BuildRequires : pkg-config
 BuildRequires : plasma-framework-dev
 BuildRequires : qca-qt5-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 Plasma-nm
@@ -78,14 +78,14 @@ locales components for the plasma-nm package.
 
 
 %prep
-%setup -q -n plasma-nm-5.14.5
+%setup -q -n plasma-nm-5.15.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546968712
+export SOURCE_DATE_EPOCH=1549986875
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -93,7 +93,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1546968712
+export SOURCE_DATE_EPOCH=1549986875
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-nm/COPYING
@@ -108,14 +108,17 @@ popd
 %find_lang plasmanetworkmanagement_openconnectui
 %find_lang plasmanetworkmanagement_openvpnui
 %find_lang plasmanetworkmanagement_vpncui
+%find_lang plasmanetworkmanagement_openswanui
+%find_lang plasmanetworkmanagement_pptpui
+%find_lang plasmanetworkmanagement_strongswanui
+%find_lang kcm_mobile_broadband
+%find_lang kcm_mobile_wifi
 %find_lang plasmanetworkmanagement-kcm
 %find_lang plasmanetworkmanagement_fortisslvpnui
 %find_lang plasmanetworkmanagement_iodineui
-%find_lang plasmanetworkmanagement_openswanui
-%find_lang plasmanetworkmanagement_pptpui
 %find_lang plasmanetworkmanagement_sshui
 %find_lang plasmanetworkmanagement_sstpui
-%find_lang plasmanetworkmanagement_strongswanui
+%find_lang plasmanetworkmanagement_wireguardui
 
 %files
 %defattr(-,root,root,-)
@@ -142,6 +145,7 @@ popd
 /usr/share/kservices5/plasmanetworkmanagement_sstpui.desktop
 /usr/share/kservices5/plasmanetworkmanagement_strongswanui.desktop
 /usr/share/kservices5/plasmanetworkmanagement_vpncui.desktop
+/usr/share/kservices5/plasmanetworkmanagement_wireguardui.desktop
 /usr/share/kservicetypes5/plasma-networkmanagement-vpnuiplugin.desktop
 /usr/share/metainfo/org.kde.plasma.networkmanagement.appdata.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/contents.rcc
@@ -167,6 +171,7 @@ popd
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_sstpui.so
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_strongswanui.so
 /usr/lib64/qt5/plugins/libplasmanetworkmanagement_vpncui.so
+/usr/lib64/qt5/plugins/libplasmanetworkmanagement_wireguardui.so
 /usr/lib64/qt5/qml/org/kde/plasma/networkmanagement/libplasmanm_qmlplugins.so
 /usr/lib64/qt5/qml/org/kde/plasma/networkmanagement/qmldir
 
@@ -175,6 +180,6 @@ popd
 /usr/share/package-licenses/plasma-nm/COPYING
 /usr/share/package-licenses/plasma-nm/COPYING.LIB
 
-%files locales -f plasma_applet_org.kde.plasma.networkmanagement.lang -f plasmanetworkmanagement-kded.lang -f plasmanetworkmanagement-libs.lang -f plasmanetworkmanagement_l2tpui.lang -f plasmanetworkmanagement_openconnectui.lang -f plasmanetworkmanagement_openvpnui.lang -f plasmanetworkmanagement_vpncui.lang -f plasmanetworkmanagement-kcm.lang -f plasmanetworkmanagement_fortisslvpnui.lang -f plasmanetworkmanagement_iodineui.lang -f plasmanetworkmanagement_openswanui.lang -f plasmanetworkmanagement_pptpui.lang -f plasmanetworkmanagement_sshui.lang -f plasmanetworkmanagement_sstpui.lang -f plasmanetworkmanagement_strongswanui.lang
+%files locales -f plasma_applet_org.kde.plasma.networkmanagement.lang -f plasmanetworkmanagement-kded.lang -f plasmanetworkmanagement-libs.lang -f plasmanetworkmanagement_l2tpui.lang -f plasmanetworkmanagement_openconnectui.lang -f plasmanetworkmanagement_openvpnui.lang -f plasmanetworkmanagement_vpncui.lang -f plasmanetworkmanagement_openswanui.lang -f plasmanetworkmanagement_pptpui.lang -f plasmanetworkmanagement_strongswanui.lang -f kcm_mobile_broadband.lang -f kcm_mobile_wifi.lang -f plasmanetworkmanagement-kcm.lang -f plasmanetworkmanagement_fortisslvpnui.lang -f plasmanetworkmanagement_iodineui.lang -f plasmanetworkmanagement_sshui.lang -f plasmanetworkmanagement_sstpui.lang -f plasmanetworkmanagement_wireguardui.lang
 %defattr(-,root,root,-)
 
