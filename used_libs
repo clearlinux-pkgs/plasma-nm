@@ -5,10 +5,13 @@ libKF5CoreAddons.so.5
 libKF5DBusAddons.so.5
 libKF5Declarative.so.5
 libKF5I18n.so.5
+libKF5IconThemes.so.5
 libKF5KIOWidgets.so.5
+libKF5ModemManagerQt.so.6
 libKF5NetworkManagerQt.so.6
 libKF5Notifications.so.5
 libKF5Service.so.5
+libKF5Solid.so.5
 libKF5Wallet.so.5
 libKF5WidgetsAddons.so.5
 libKF5WindowSystem.so.5
