@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : plasma-nm
-Version  : 5.16.4
-Release  : 25
-URL      : https://download.kde.org/stable/plasma/5.16.4/plasma-nm-5.16.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.4/plasma-nm-5.16.4.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.4/plasma-nm-5.16.4.tar.xz.sig
+Version  : 5.16.5
+Release  : 26
+URL      : https://download.kde.org/stable/plasma/5.16.5/plasma-nm-5.16.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.5/plasma-nm-5.16.5.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.16.5/plasma-nm-5.16.5.tar.xz.sig
 Summary  : Plasma applet written in QML for managing network connections
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -81,16 +81,17 @@ locales components for the plasma-nm package.
 
 
 %prep
-%setup -q -n plasma-nm-5.16.4
+%setup -q -n plasma-nm-5.16.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564514439
+export SOURCE_DATE_EPOCH=1567650789
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -104,7 +105,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1564514439
+export SOURCE_DATE_EPOCH=1567650789
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
 cp COPYING %{buildroot}/usr/share/package-licenses/plasma-nm/COPYING
