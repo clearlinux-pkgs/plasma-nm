@@ -4,7 +4,7 @@
 #
 Name     : plasma-nm
 Version  : 5.23.0
-Release  : 53
+Release  : 54
 URL      : https://download.kde.org/stable/plasma/5.23.0/plasma-nm-5.23.0.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.23.0/plasma-nm-5.23.0.tar.xz
 Summary  : No detailed summary available
