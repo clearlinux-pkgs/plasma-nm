@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-nm
-Version  : 5.24.5
-Release  : 65
-URL      : https://download.kde.org/stable/plasma/5.24.5/plasma-nm-5.24.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.24.5/plasma-nm-5.24.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.24.5/plasma-nm-5.24.5.tar.xz.sig
+Version  : 5.25.0
+Release  : 66
+URL      : https://download.kde.org/stable/plasma/5.25.0/plasma-nm-5.25.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.25.0/plasma-nm-5.25.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.25.0/plasma-nm-5.25.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -31,7 +31,6 @@ BuildRequires : pkgconfig(openconnect)
 BuildRequires : plasma-framework-dev
 BuildRequires : prison-dev
 BuildRequires : qca-qt5-dev
-BuildRequires : qtbase-dev mesa-dev
 
 %description
 auth dialog
@@ -87,15 +86,15 @@ locales components for the plasma-nm package.
 
 
 %prep
-%setup -q -n plasma-nm-5.24.5
-cd %{_builddir}/plasma-nm-5.24.5
+%setup -q -n plasma-nm-5.25.0
+cd %{_builddir}/plasma-nm-5.25.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651624589
+export SOURCE_DATE_EPOCH=1655416017
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -111,22 +110,22 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1651624589
+export SOURCE_DATE_EPOCH=1655416017
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
-cp %{_builddir}/plasma-nm-5.24.5/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/plasma-nm/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-nm/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-nm/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/19d98e1b6f8ef12849ea4012a052d3907f336c91
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-nm-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-nm-5.25.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/plasma-nm/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-nm/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-nm/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/19d98e1b6f8ef12849ea4012a052d3907f336c91
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-nm-5.25.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -142,7 +141,7 @@ popd
 %find_lang kcm_mobile_wifi
 %find_lang plasmanetworkmanagement_fortisslvpnui
 %find_lang plasmanetworkmanagement_iodineui
-%find_lang plasmanetworkmanagement_openswanui
+%find_lang plasmanetworkmanagement_libreswanui
 %find_lang plasmanetworkmanagement_pptpui
 %find_lang plasmanetworkmanagement_sshui
 %find_lang plasmanetworkmanagement_sstpui
@@ -153,14 +152,13 @@ popd
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/applications/kcm_networkmanagement.desktop
 /usr/share/kcm_networkmanagement/qml/AddConnectionDialog.qml
 /usr/share/kcm_networkmanagement/qml/ConfigurationDialog.qml
 /usr/share/kcm_networkmanagement/qml/ConnectionItem.qml
 /usr/share/kcm_networkmanagement/qml/ListItem.qml
 /usr/share/kcm_networkmanagement/qml/main.qml
 /usr/share/knotifications5/networkmanagement.notifyrc
-/usr/share/kservices5/kcm_networkmanagement.desktop
-/usr/share/kservices5/plasma-applet-org.kde.plasma.networkmanagement.desktop
 /usr/share/metainfo/org.kde.plasma.networkmanagement.appdata.xml
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/contents/ui/CompactRepresentation.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/contents/ui/ConnectionItem.qml
@@ -172,7 +170,6 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/contents/ui/Toolbar.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/contents/ui/TrafficMonitor.qml
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/contents/ui/main.qml
-/usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/metadata.desktop
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/metadata.json
 /usr/share/qlogging-categories5/plasma-nm.categories
 
@@ -183,16 +180,16 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/qt5/plugins/kcm_networkmanagement.so
 /usr/lib64/qt5/plugins/kf5/kded/networkmanagement.so
+/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_fortisslvpnui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_iodineui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_l2tpui.so
+/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_libreswanui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_anyconnect.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_globalprotectui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_juniperui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_pulseui.so
-/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openswanui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openvpnui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_pptpui.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_sshui.so
@@ -215,6 +212,6 @@ popd
 /usr/share/package-licenses/plasma-nm/a4c60b3fefda228cd7439d3565df043192fef137
 /usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
 
-%files locales -f plasma_applet_org.kde.plasma.networkmanagement.lang -f plasmanetworkmanagement-kded.lang -f plasmanetworkmanagement-libs.lang -f plasmanetworkmanagement_l2tpui.lang -f plasmanetworkmanagement_openconnectui.lang -f plasmanetworkmanagement_openvpnui.lang -f plasmanetworkmanagement_vpncui.lang -f plasmanetworkmanagement-kcm.lang -f kcm_mobile_hotspot.lang -f kcm_mobile_wifi.lang -f plasmanetworkmanagement_fortisslvpnui.lang -f plasmanetworkmanagement_iodineui.lang -f plasmanetworkmanagement_openswanui.lang -f plasmanetworkmanagement_pptpui.lang -f plasmanetworkmanagement_sshui.lang -f plasmanetworkmanagement_sstpui.lang -f plasmanetworkmanagement_strongswanui.lang
+%files locales -f plasma_applet_org.kde.plasma.networkmanagement.lang -f plasmanetworkmanagement-kded.lang -f plasmanetworkmanagement-libs.lang -f plasmanetworkmanagement_l2tpui.lang -f plasmanetworkmanagement_openconnectui.lang -f plasmanetworkmanagement_openvpnui.lang -f plasmanetworkmanagement_vpncui.lang -f plasmanetworkmanagement-kcm.lang -f kcm_mobile_hotspot.lang -f kcm_mobile_wifi.lang -f plasmanetworkmanagement_fortisslvpnui.lang -f plasmanetworkmanagement_iodineui.lang -f plasmanetworkmanagement_libreswanui.lang -f plasmanetworkmanagement_pptpui.lang -f plasmanetworkmanagement_sshui.lang -f plasmanetworkmanagement_sstpui.lang -f plasmanetworkmanagement_strongswanui.lang
 %defattr(-,root,root,-)
 
