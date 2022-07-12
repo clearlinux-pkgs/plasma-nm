@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-nm
-Version  : 5.25.2
-Release  : 68
-URL      : https://download.kde.org/stable/plasma/5.25.2/plasma-nm-5.25.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.25.2/plasma-nm-5.25.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.25.2/plasma-nm-5.25.2.tar.xz.sig
+Version  : 5.25.3
+Release  : 69
+URL      : https://download.kde.org/stable/plasma/5.25.3/plasma-nm-5.25.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.25.3/plasma-nm-5.25.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.25.3/plasma-nm-5.25.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -86,15 +86,15 @@ locales components for the plasma-nm package.
 
 
 %prep
-%setup -q -n plasma-nm-5.25.2
-cd %{_builddir}/plasma-nm-5.25.2
+%setup -q -n plasma-nm-5.25.3
+cd %{_builddir}/plasma-nm-5.25.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656448767
+export SOURCE_DATE_EPOCH=1657641629
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -110,22 +110,22 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1656448767
+export SOURCE_DATE_EPOCH=1657641629
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
-cp %{_builddir}/plasma-nm-5.25.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/plasma-nm/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-nm/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-nm/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/19d98e1b6f8ef12849ea4012a052d3907f336c91
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/plasma-nm-5.25.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-nm-5.25.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/plasma-nm/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-nm/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/plasma-nm/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/plasma-nm/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/plasma-nm/19d98e1b6f8ef12849ea4012a052d3907f336c91
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/plasma-nm-5.25.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
