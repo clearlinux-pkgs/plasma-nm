@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-nm
-Version  : 5.26.5
-Release  : 77
-URL      : https://download.kde.org/stable/plasma/5.26.5/plasma-nm-5.26.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.5/plasma-nm-5.26.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.5/plasma-nm-5.26.5.tar.xz.sig
+Version  : 5.27.0
+Release  : 78
+URL      : https://download.kde.org/stable/plasma/5.27.0/plasma-nm-5.27.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.0/plasma-nm-5.27.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.0/plasma-nm-5.27.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -21,12 +21,15 @@ BuildRequires : ModemManager-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
+BuildRequires : kio-dev
 BuildRequires : kirigami2-dev
+BuildRequires : kwindowsystem-dev
 BuildRequires : modemmanager-qt-dev
 BuildRequires : openconnect-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(mobile-broadband-provider-info)
 BuildRequires : pkgconfig(openconnect)
+BuildRequires : pkgconfig(x11)
 BuildRequires : plasma-framework-dev
 BuildRequires : prison-dev
 BuildRequires : qca-qt5-dev
@@ -88,15 +91,15 @@ locales components for the plasma-nm package.
 
 
 %prep
-%setup -q -n plasma-nm-5.26.5
-cd %{_builddir}/plasma-nm-5.26.5
+%setup -q -n plasma-nm-5.27.0
+cd %{_builddir}/plasma-nm-5.27.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673311593
+export SOURCE_DATE_EPOCH=1676677062
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -112,7 +115,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1673311593
+export SOURCE_DATE_EPOCH=1676677062
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
 cp %{_builddir}/plasma-nm-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/plasma-nm/29fb05b49e12a380545499938c4879440bd8851e || :
@@ -138,9 +141,9 @@ popd
 %find_lang plasmanetworkmanagement_openconnectui
 %find_lang plasmanetworkmanagement_openvpnui
 %find_lang plasmanetworkmanagement_vpncui
-%find_lang plasmanetworkmanagement-kcm
 %find_lang kcm_mobile_hotspot
 %find_lang kcm_mobile_wifi
+%find_lang plasmanetworkmanagement-kcm
 %find_lang plasmanetworkmanagement_fortisslvpnui
 %find_lang plasmanetworkmanagement_iodineui
 %find_lang plasmanetworkmanagement_libreswanui
@@ -217,6 +220,6 @@ popd
 /usr/share/package-licenses/plasma-nm/a4c60b3fefda228cd7439d3565df043192fef137
 /usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32
 
-%files locales -f plasma_applet_org.kde.plasma.networkmanagement.lang -f plasmanetworkmanagement-kded.lang -f plasmanetworkmanagement-libs.lang -f plasmanetworkmanagement_l2tpui.lang -f plasmanetworkmanagement_openconnectui.lang -f plasmanetworkmanagement_openvpnui.lang -f plasmanetworkmanagement_vpncui.lang -f plasmanetworkmanagement-kcm.lang -f kcm_mobile_hotspot.lang -f kcm_mobile_wifi.lang -f plasmanetworkmanagement_fortisslvpnui.lang -f plasmanetworkmanagement_iodineui.lang -f plasmanetworkmanagement_libreswanui.lang -f plasmanetworkmanagement_pptpui.lang -f plasmanetworkmanagement_sshui.lang -f plasmanetworkmanagement_sstpui.lang -f plasmanetworkmanagement_strongswanui.lang
+%files locales -f plasma_applet_org.kde.plasma.networkmanagement.lang -f plasmanetworkmanagement-kded.lang -f plasmanetworkmanagement-libs.lang -f plasmanetworkmanagement_l2tpui.lang -f plasmanetworkmanagement_openconnectui.lang -f plasmanetworkmanagement_openvpnui.lang -f plasmanetworkmanagement_vpncui.lang -f kcm_mobile_hotspot.lang -f kcm_mobile_wifi.lang -f plasmanetworkmanagement-kcm.lang -f plasmanetworkmanagement_fortisslvpnui.lang -f plasmanetworkmanagement_iodineui.lang -f plasmanetworkmanagement_libreswanui.lang -f plasmanetworkmanagement_pptpui.lang -f plasmanetworkmanagement_sshui.lang -f plasmanetworkmanagement_sstpui.lang -f plasmanetworkmanagement_strongswanui.lang
 %defattr(-,root,root,-)
 
