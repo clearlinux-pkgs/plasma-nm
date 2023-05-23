@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : plasma-nm
-Version  : 5.27.4
-Release  : 83
-URL      : https://download.kde.org/stable/plasma/5.27.4/plasma-nm-5.27.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.4/plasma-nm-5.27.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.4/plasma-nm-5.27.4.tar.xz.sig
+Version  : 5.27.5
+Release  : 84
+URL      : https://download.kde.org/stable/plasma/5.27.5/plasma-nm-5.27.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.5/plasma-nm-5.27.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.5/plasma-nm-5.27.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -89,31 +89,48 @@ locales components for the plasma-nm package.
 
 
 %prep
-%setup -q -n plasma-nm-5.27.4
-cd %{_builddir}/plasma-nm-5.27.4
+%setup -q -n plasma-nm-5.27.5
+cd %{_builddir}/plasma-nm-5.27.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680719249
+export SOURCE_DATE_EPOCH=1684817340
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1680719249
+export SOURCE_DATE_EPOCH=1684817340
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
 cp %{_builddir}/plasma-nm-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/plasma-nm/29fb05b49e12a380545499938c4879440bd8851e || :
@@ -129,6 +146,9 @@ cp %{_builddir}/plasma-nm-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{
 cp %{_builddir}/plasma-nm-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/7d9831e05094ce723947d729c2a46a09d6e90275 || :
 cp %{_builddir}/plasma-nm-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32 || :
 cp %{_builddir}/plasma-nm-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/plasma-nm/e458941548e0864907e654fa2e192844ae90fc32 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
@@ -149,6 +169,7 @@ popd
 %find_lang plasmanetworkmanagement_sshui
 %find_lang plasmanetworkmanagement_sstpui
 %find_lang plasmanetworkmanagement_strongswanui
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -178,11 +199,33 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libplasmanm_editor.so
+/V3/usr/lib64/libplasmanm_internal.so
 /usr/lib64/libplasmanm_editor.so
 /usr/lib64/libplasmanm_internal.so
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/qt5/plugins/kf5/kded/networkmanagement.so
+/V3/usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_fortisslvpnui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_iodineui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_l2tpui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_libreswanui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_anyconnect.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_arrayui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_f5ui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_fortinetui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_globalprotectui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_juniperui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openconnect_pulseui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_openvpnui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_pptpui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_sshui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_sstpui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_strongswanui.so
+/V3/usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_vpncui.so
+/V3/usr/lib64/qt5/qml/org/kde/plasma/networkmanagement/libplasmanm_qmlplugins.so
 /usr/lib64/qt5/plugins/kf5/kded/networkmanagement.so
 /usr/lib64/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
 /usr/lib64/qt5/plugins/plasma/network/vpn/plasmanetworkmanagement_fortisslvpnui.so
