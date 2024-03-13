@@ -2,5 +2,8 @@
 # picked up automatically. One name per line, no whitespace.
 ModemManager-dev
 openconnect-dev
-plasma-framework-dev
-qca-qt5-dev
+qt6webengine-dev
+networkmanager-qt-dev
+modemmanager-qt-dev
+qcoro6-dev
+qca-qt6-dev
