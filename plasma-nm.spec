@@ -9,7 +9,7 @@
 #
 Name     : plasma-nm
 Version  : 6.0.2
-Release  : 94
+Release  : 95
 URL      : https://download.kde.org/stable/plasma/6.0.2/plasma-nm-6.0.2.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.0.2/plasma-nm-6.0.2.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.0.2/plasma-nm-6.0.2.tar.xz.sig
@@ -36,6 +36,7 @@ BuildRequires : openconnect-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(mobile-broadband-provider-info)
 BuildRequires : pkgconfig(openconnect)
+BuildRequires : prison-dev
 BuildRequires : qca-dev
 BuildRequires : qcoro6-dev
 BuildRequires : qt6base-dev
@@ -57,18 +58,6 @@ Group: Data
 
 %description data
 data components for the plasma-nm package.
-
-
-%package dev
-Summary: dev components for the plasma-nm package.
-Group: Development
-Requires: plasma-nm-lib = %{version}-%{release}
-Requires: plasma-nm-data = %{version}-%{release}
-Provides: plasma-nm-devel = %{version}-%{release}
-Requires: plasma-nm = %{version}-%{release}
-
-%description dev
-dev components for the plasma-nm package.
 
 
 %package lib
@@ -106,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1710602034
+export SOURCE_DATE_EPOCH=1711130915
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -167,7 +156,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1710602034
+export SOURCE_DATE_EPOCH=1711130915
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
 cp %{_builddir}/plasma-nm-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-nm/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -239,15 +228,10 @@ popd
 /usr/share/plasma/plasmoids/org.kde.plasma.networkmanagement/metadata.json
 /usr/share/qlogging-categories6/plasma-nm.categories
 
-%files dev
+%files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/libplasmanm_editor.so
 /V3/usr/lib64/libplasmanm_internal.so
-/usr/lib64/libplasmanm_editor.so
-/usr/lib64/libplasmanm_internal.so
-
-%files lib
-%defattr(-,root,root,-)
 /V3/usr/lib64/qt6/plugins/kf6/kded/networkmanagement.so
 /V3/usr/lib64/qt6/plugins/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
 /V3/usr/lib64/qt6/plugins/plasma/network/vpn/plasmanetworkmanagement_fortisslvpnui.so
@@ -268,6 +252,8 @@ popd
 /V3/usr/lib64/qt6/plugins/plasma/network/vpn/plasmanetworkmanagement_strongswanui.so
 /V3/usr/lib64/qt6/plugins/plasma/network/vpn/plasmanetworkmanagement_vpncui.so
 /V3/usr/lib64/qt6/qml/org/kde/plasma/networkmanagement/libplasmanm_internalplugin.so
+/usr/lib64/libplasmanm_editor.so
+/usr/lib64/libplasmanm_internal.so
 /usr/lib64/qt6/plugins/kf6/kded/networkmanagement.so
 /usr/lib64/qt6/plugins/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
 /usr/lib64/qt6/plugins/plasma/network/vpn/plasmanetworkmanagement_fortisslvpnui.so
