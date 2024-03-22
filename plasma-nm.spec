@@ -9,7 +9,7 @@
 #
 Name     : plasma-nm
 Version  : 6.0.2
-Release  : 95
+Release  : 97
 URL      : https://download.kde.org/stable/plasma/6.0.2/plasma-nm-6.0.2.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.0.2/plasma-nm-6.0.2.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.0.2/plasma-nm-6.0.2.tar.xz.sig
@@ -28,6 +28,7 @@ BuildRequires : kcoreaddons-dev
 BuildRequires : kdbusaddons-dev
 BuildRequires : ki18n-dev
 BuildRequires : kio-dev
+BuildRequires : kirigami-dev
 BuildRequires : knotifications-dev
 BuildRequires : kservice-dev
 BuildRequires : modemmanager-qt-dev
@@ -95,7 +96,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1711130915
+export SOURCE_DATE_EPOCH=1711131267
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -156,7 +157,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1711130915
+export SOURCE_DATE_EPOCH=1711131267
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/plasma-nm
 cp %{_builddir}/plasma-nm-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/plasma-nm/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
