@@ -9,7 +9,7 @@
 #
 Name     : plasma-nm
 Version  : 6.2.5
-Release  : 115
+Release  : 116
 URL      : https://download.kde.org/stable/plasma/6.2.5/plasma-nm-6.2.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.2.5/plasma-nm-6.2.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.2.5/plasma-nm-6.2.5.tar.xz.sig
